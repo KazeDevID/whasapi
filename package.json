@@ -1,0 +1,45 @@
+{
+  "name": "@kazedevid/whasapi",
+  "version": "1.0.0",
+  "description": "easy way to create Whatsapp Bot.",
+  "main": "dist/index.js",
+  "scripts": {
+    "watch": "tsc --watch",
+    "build": "tsc",
+    "example": "tsc example/app.ts --esModuleInterop && node example/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KazeDevID/whasapi.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KazeDevID/whasapi/issues"
+  },
+  "homepage": "https://github.com/KazeDevID/whasapi#readme",
+  "keywords": [
+    "whatsapp",
+    "whatsapp-bot",
+    "bot",
+    "baileys",
+    "baileys-md",
+    "whatsapp-web",
+    "whatsapp-api",
+    "simple-api",
+    "whasapi",
+    "md",
+    "Kaze"
+  ],
+  "author": "KazeDevID <kazedevid@gmail.com> (https://github.com/KazeDevID/)",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "@adiwajshing/baileys": "^4.4.0",
+    "@discordjs/collection": "^1.4.0",
+    "@hapi/boom": "^10.0.1",
+    "pino": "^8.11.0",
+    "qrcode-terminal": "^0.12.0",
+    "undici": "^5.21.0"
+  }
+}

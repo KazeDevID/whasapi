@@ -1,0 +1,1 @@
+{"version":3,"file":"Sections.d.ts","sourceRoot":"","sources":["../../../src/Classes/Builder/Sections.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,eAAe,EAAE,YAAY,EAAE,MAAM,oBAAoB,CAAC;AAEnE,qBAAa,eAAe;IACxB,KAAK,EAAE,MAAM,GAAC,IAAI,CAAC;IACnB,IAAI,EAAE,YAAY,EAAE,CAAC;gBAET,IAAI,CAAC,EAAE,eAAe;IAKlC,QAAQ,CAAC,KAAK,EAAE,MAAM;IAMtB,OAAO,CAAC,GAAG,GAAG,EAAE,YAAY,EAAE;CAKjC"}
