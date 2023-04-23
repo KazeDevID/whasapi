@@ -52,6 +52,7 @@ class Client {
         this.printQRInTerminal = (_c = opts.printQRInTerminal) !== null && _c !== void 0 ? _c : true;
         this.ev = new events_1.default();
         this.cmd = new collection_1.Collection();
+        this.fakeLogoDevice = "safari";
         this.cooldown = new collection_1.Collection();
         if (typeof this.prefix === "string")
             this.prefix = this.prefix.split('');
@@ -137,7 +138,7 @@ class Client {
                 logger: (0, pino_1.default)({ level: "fatal" }),
                 printQRInTerminal: this.printQRInTerminal,
                 auth: this.state,
-                browser: [this.name, "Chrome", "1.0.0"],
+                browser: [this.name, this.fakeLogoDevice, "1.0.0"],
                 version,
             });
             this.onConnectionUpdate();
