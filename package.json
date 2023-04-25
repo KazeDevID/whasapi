@@ -35,7 +35,7 @@
     "typescript": "^4.9.5"
   },
   "dependencies": {
-    "@adiwajshing/baileys": "github:vrzaq/wwsocked-razzaq",
+    "@adiwajshing/baileys": "npm:baileysssss",
     "@discordjs/collection": "^1.4.0",
     "@hapi/boom": "^10.0.1",
     "pino": "^8.11.0",
