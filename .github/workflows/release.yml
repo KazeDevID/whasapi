@@ -6,7 +6,7 @@ on:
 
         branches: 
 
-        - masterr
+        - master
 
 jobs:
 
