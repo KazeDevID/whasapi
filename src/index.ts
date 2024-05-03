@@ -7,6 +7,6 @@ export * from "./Classes/Builder/VCard";
 export * from "./Classes/Builder/TemplateButtons";
 export * from "./Helper/Formatter";
 export * from "./Common/Types";
-export * from "./Classes/sock";
+export * from "./Classes/Sock";
 export * from "./Classes/Collector/Collector";
 export * from "./Classes/Collector/MessageCollector";
