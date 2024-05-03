@@ -1,6 +1,6 @@
 import { Collection } from "@discordjs/collection";
 import { decodeJid } from "../Common/Functions";
-import { ICtx } from "../Common/Types";
+import { ISock } from "../Common/Types";
 import EventEmitter from "events";
 
 export class Cooldown extends EventEmitter {
@@ -8,13 +8,13 @@ export class Cooldown extends EventEmitter {
     cooldown: Collection<unknown, unknown> | undefined;
     timeout: number;
 
-    constructor(whasapi: ICtx, ms: number) {
+    constructor(sock: ISock, ms: number) {
         super();
         this.ms = ms;
-        this.cooldown = whasapi._self.cooldown;
+        this.cooldown = sock._self.cooldown;
         this.timeout = 0;
 
-        let q = `cooldown_${whasapi._used.command}_${decodeJid(whasapi._msg.key.remoteJid as string)}_${decodeJid(whasapi._sender.jid as string)}`;
+        let q = `cooldown_${sock._used.command}_${decodeJid(sock._msg.key.remoteJid as string)}_${decodeJid(sock._sender.jid as string)}`;
         const get = this.cooldown?.get(q);
         if (get) {
             this.timeout = Number(get) - Date.now();
