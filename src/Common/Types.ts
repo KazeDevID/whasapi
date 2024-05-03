@@ -1,5 +1,5 @@
 import { Collection } from "@discordjs/collection";
-import { sock } from "../Classes/sock";
+import { Sock } from "../Classes/Sock";
 import makeWASocket, { WAProto } from "@whiskeysockets/baileys"
 import { Client } from "../Classes/Client";
 
@@ -17,7 +17,7 @@ export interface IClientOptions {
 export interface ICommandOptions {
     name: string;
     aliases?: Array<string>;
-    code: (sock: sock) => Promise<any>;
+    code: (sock: Sock) => Promise<any>;
 }
 
 export interface ISectionsOptions {
@@ -39,10 +39,10 @@ export interface ICollectorArgs {
     filter?: () => boolean;
 }
 
-export interface ICtx {
+export interface ISock {
     _used: { prefix: Array<string>|string, command: string };
     _args: Array<String>;
-    _self: ICtxSelf;
+    _self: ISockSelf;
     _client: ReturnType<typeof makeWASocket>;
     _msg: IMessageInfo;
     _sender: { jid: string | null | undefined; pushName: string | null | undefined; };
@@ -70,14 +70,14 @@ export interface IMessageCollectorCollect extends IMessageInfo {
     content: string | null | undefined
 }
 
-export interface ICtxSelf extends Client {
+export interface ISockSelf extends Client {
     getContentType: any,
     m: IMessageInfo
 }
 
-export interface ICtxOptions {
+export interface ISockOptions {
     used: any;
     args: string[];
-    self: ICtxSelf;
+    self: ISockSelf;
     client: ReturnType<typeof makeWASocket>;
 }
