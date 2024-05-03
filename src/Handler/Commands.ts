@@ -1,15 +1,15 @@
 import { arrayMove } from "../Common/Functions";
-import { sock } from "../Classes/sock";
-import { ICommandOptions, ICtxSelf } from "../Common/Types";
+import { Sock } from "../Classes/Sock";
+import { ICommandOptions, ISockSelf } from "../Common/Types";
 import { Collection } from "@discordjs/collection";
 
-export = async (self: ICtxSelf) => {
+export = async (self: ISockSelf) => {
     let { cmd, prefix, m } = self;
 
     if (!m || !m.message || m.key.fromMe || (m.key && m.key.remoteJid === "status@broadcast")) return;
 
     const hasHears = Array.from(self.hearsMap.values()).filter((x) => (x.name === m.content) || (x.name === m.messageType) || (new RegExp(x.name).test(m.content as string)) || (Array.isArray(x.name) ? x.name.includes(m.content) : false));
-    if (hasHears.length) return hasHears.map((x) => x.code(new sock({ used: { hears: m.content }, args: [], self, client: self.core })));
+    if (hasHears.length) return hasHears.map((x) => x.code(new Sock({ used: { hears: m.content }, args: [], self, client: self.core })));
 
     let allCommandsValue = Array.from(cmd?.values() as unknown as ArrayLike<unknown>);
 
@@ -44,5 +44,5 @@ export = async (self: ICtxSelf) => {
                 : c.aliases === command.toLowerCase())
     ) as Array<ICommandOptions>;
 
-    if (commandDetail.length) commandDetail.map((x) => x.code(new sock({ used: { prefix: selectedPrefix, command }, args, self, client: self.core })));
+    if (commandDetail.length) commandDetail.map((x) => x.code(new Sock({ used: { prefix: selectedPrefix, command }, args, self, client: self.core })));
 };
