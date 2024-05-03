@@ -13,7 +13,7 @@ import EventEmitter from "events";
 import { Events } from "../Constant/Events";
 import { Collection } from "@discordjs/collection";
 import { IClientOptions, ICommandOptions, IMessageInfo } from "../Common/Types";
-import { sock } from "./sock";
+import { Sock } from "./Sock";
 import { getContentFromMsg } from "../Common/Functions";
 import { MessageEventList } from "../Handler/MessageEvents";
  
@@ -115,7 +115,7 @@ export class Client {
                 await MessageEventList[msgType](m, this.ev, self, this.core);
             }
             
-            this.ev?.emit(Events.MessagesUpsert, m, new sock({ used: { upsert: m.content }, args: [], self, client: this.core }));
+            this.ev?.emit(Events.MessagesUpsert, m, new Sock({ used: { upsert: m.content }, args: [], self, client: this.core }));
             if (this.readIncommingMsg) this.read(m);
             await require('../Handler/Commands')(self);
         });
@@ -152,7 +152,7 @@ export class Client {
      * });
      * ```
      */
-    command(opts: ICommandOptions | string, code?: (sock: sock) => Promise<any>) {
+    command(opts: ICommandOptions | string, code?: (sock: Sock) => Promise<any>) {
         if(typeof opts !== 'string') return this.cmd?.set(this.cmd.size, opts);
 
         if(!code) code = async() => { return null; };
@@ -164,7 +164,7 @@ export class Client {
      * @param query The trigger.
      * @param callback Callback function
      */
-    hears(query: string | Array<string> | RegExp, callback: (sock: sock) => Promise<any>) {
+    hears(query: string | Array<string> | RegExp, callback: (sock: Sock) => Promise<any>) {
         this.hearsMap.set(this.hearsMap.size, { name: query, code: callback });
     }
 
@@ -222,4 +222,4 @@ export class Client {
         this.onGroupParticipantsUpdate();
         this.onGroupsJoin();
     }
-}
+              }
